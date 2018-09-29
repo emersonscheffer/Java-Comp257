@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+//3.18 (Credit Limit Calculator)
+//Develop a Java application that determines whether any of several 
+//department-store customers has exceeded the credit limit on a charge account.
+//For each customer, the following facts are available:
+//a) account number
+//b) balance at the beginning of the month
+//c) total of all items charged by the customer this month
+//d) total of all credits applied to the customer’s account this month
+//e) allowed credit limit.
+//The program should input all these facts as integers, calculate the new balance
+//(= beginning balance + charges – credits), display the new balance and determine
+//whether the new balance exceeds the customer’s credit limit. For those customers
+//whose credit limit is exceeded, the program should display the message "Credit limit exceeded".
+
+
+public class Ex3_18CreditLimitCalculator {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		int accountNumber = 0;
+		int balanceBegginingMonth = 0;
+		int totalItemsCharged = 0;
+		int totalCreditsApplied = 0;
+		int allowedCreditLimit = 0;
+		
+		int totalCharges = 0;
+		int accountCredit = 0;
+		
+		Boolean newCostumerBool = true;
+		int newCostumerNum = 0;
+		
+		
+		do {
+			System.out.print("Enter Account Number: ");
+			accountNumber = input.nextInt();
+			
+			System.out.print("Enter Account Credit: $");
+			allowedCreditLimit = input.nextInt();
+			
+			System.out.print("Enter Balance at the Beggining of the Month: $");
+			balanceBegginingMonth = input.nextInt();
+			
+			System.out.print("Enter the Number of Items Charged, 'Single unit costs $30': ");
+			totalItemsCharged = input.nextInt();
+			
+			totalCharges = totalItemsCharged * 30;
+			
+			System.out.println("Total Charges: $" + totalCharges);
+			System.out.println("The New Balance is: $" + (totalCharges + balanceBegginingMonth));
+			
+			System.out.print("Enter the Amount of Money Costumer Paid: ");
+			totalCreditsApplied = input.nextInt();
+			
+			accountCredit = (totalCharges + balanceBegginingMonth) - totalCreditsApplied;
+			
+			System.out.println("Total Balance in the account is: $" + accountCredit);
+			
+			if(accountCredit > allowedCreditLimit) {
+				System.out.println("Credit limit exceeded");
+			}
+			
+			
+			
+			System.out.println("Enter 1 for new costumer OR 0 (zero) to end: " );
+			newCostumerNum = input.nextInt();
+			
+			if(newCostumerNum == 0) {
+				break;
+			} else {
+				System.out.println("New Costumer");
+			}
+			
+			
+			
+		} while(newCostumerBool = true);
+			
+		
+			
+		
+		System.out.println("Thank you and good bye!");
+
+	}
+
+}
