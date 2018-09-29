@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+//3.23 (Find the Two Largest Numbers) Using an approach similar to that for Exercise 3.21,
+//find the two largest values of the 10 values entered. [Note: You may input each number only once.]
+
+public class Ex3_23FindTwoLargest {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		int numbers[] = new int[10];
+		for (int i = 0; i < numbers.length; i++) {
+			System.out.print("Enter number " + (i + 1) + ": ");
+			numbers[i] = input.nextInt();
+		}
+		
+		int a = -50000;
+		int b = -50000;
+		
+		
+			
+		for ( int i = 0; i < numbers.length; i++) {
+			
+			if(a < numbers[i]) {
+				a = numbers[i];
+			} 
+						
+		}
+		
+		System.out.println("The First Largest Value is:" + a);
+		
+		for ( int i = 0; i < numbers.length; i++) {
+			
+			if(numbers[i] == a) {
+				;
+			} else {
+				if(b < numbers[i]) {
+					b = numbers[i];
+				}
+				
+			}
+			
+						
+		}
+		
+		
+		System.out.println("The Second Largest Value is:" + b);
+		
+
+	}
+
+}
