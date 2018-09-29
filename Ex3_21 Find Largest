@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+//3.21 (Find the Largest Number) The process of finding the largest value is used frequently
+//in computer applications. For example, a program that determines the winner of a sales contest
+//would input the number of units sold by each salesperson. The salesperson who sells the most 
+//units wins the contest. Write a pseudocode program, then a Java application that inputs a 
+//series of 10 integers and determines and prints the largest integer. Your program should use at 
+//least the following three variables:
+//a) counter: A counter to count to 10 (i.e., to keep track of how many numbers have been input
+//and to determine when all 10 numbers have been processed).
+//b) number:Theinteger most recently input by the user.
+//c) largest: The largest number found so far.
+
+
+public class Ex3_21FindLargest {
+
+	public static void main(String[] args) {
+		
+		//pseudocode program
+		//1 Scanner input
+		//2 declaring array size 10
+		//3 loop through array to input 10 numbers
+		//4 print the numbers that the user entered 
+		//5 find and display largest
+	
+		Scanner input = new Scanner(System.in);
+		
+		int numbers[] = new int[10];
+		
+		for (int i = 0; i < numbers.length; i++) {
+			
+			System.out.print("Enter number "+ (i + 1) + ": ");
+			 numbers[i] = input.nextInt();
+		}
+		
+		System.out.println("");
+		System.out.println("You entered the numbers");
+		System.out.println("");
+		
+		for (int i = 0; i < numbers.length; i++) {
+			
+			System.out.println("Number "+ (i + 1) + ": " + numbers[i]);
+			 
+		}
+		
+		//logic largest
+		int largest = -10000;
+		System.out.print("And the Largest Number is: ");
+		
+		
+		for (int i = 0; i < numbers.length; i++) {
+			if(largest <= numbers[i]) {
+				largest = numbers[i];
+			}
+		}
+		
+		System.out.println(largest);
+		
+		
+		
+	}
+
+}
