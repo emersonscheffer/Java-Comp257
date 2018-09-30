@@ -1,0 +1,155 @@
+import java.util.Scanner;
+
+//3.37 (Factorial) The factorial of a nonnegative integer n is written as n! 
+//(pronounced “n factorial”) and is defined as follows:
+//n! = n·(n–1)·(n–2)·...·1 (for values of n greater than or equal to 1) and
+//n! = 1 (for n = 0)
+//For example, 5! = 5 · 4 · 3 · 2 · 1, which is 120.
+//a) Write an application that reads a nonnegative integer and computes and 
+//prints its factorial.
+
+//b) Write an application that estimates the value of the mathematical constant e by using
+//the following formula. Allow the user to enter the number of terms to calculate.
+
+//c) Write an application that computes the value of ex by using the following formula. 
+//Allow the user to enter the number of terms to calculate.
+
+public class Ex3_38Factorial {
+
+	public static void main(String[] args) {
+		
+		
+		Scanner input = new Scanner(System.in);
+		
+		Boolean isNegative = true;
+		
+		int number = 0;
+		
+		// part A
+		System.out.println("Exercise part a");
+		System.out.println(" ");
+		
+		while(isNegative) {
+			System.out.print("Enter a non negative number to calculate its factorial: ");
+			number = input.nextInt();
+			
+			if(number < 0) {
+				;
+			} else {
+				isNegative = false;
+			}
+			
+		}
+		
+		//factorial
+		int factorial = 1;
+		
+		for(int i = number; i > 0; i--) {
+		
+			factorial = factorial * i; 
+			
+		}
+		
+		System.out.println("The factorial of " + number + " is: "+ factorial);
+
+		
+		
+		
+		System.out.println(" ");
+		System.out.println("Exercise part b: ");
+		System.out.println(" ");
+		
+		System.out.println("Calculating the constant e ");
+		isNegative = true;
+		
+		 double numberB = 0;
+		
+		while(isNegative) {
+			System.out.print("Enter the number of terms to calculate the constant e, please enter a non negative number: ");
+			numberB = input.nextDouble();
+			
+			if(numberB < 0) {
+				;
+			} else {
+				isNegative = false;
+			}
+			
+		}
+		
+		double constantE = 1;
+		
+		double numberOfTerms = numberB;
+		
+		for(int i = 0; i < numberOfTerms; i++) {
+			
+			//factorial
+			double factorialB = 1;
+			
+			for(double j = numberB; j > 0; j--) {
+			
+				factorialB = factorialB * j; 
+				
+			}
+			
+			constantE = constantE + (1/factorialB);
+			
+			numberB--;
+		}
+		
+		
+		System.out.println("This is the result: e = " + constantE);
+		
+			
+		System.out.println(" ");
+		System.out.println("Exercise part c: ");
+		System.out.println(" ");
+		
+		System.out.println("Calculating the constant e with exponent ");
+		isNegative = true;
+		
+		 double numberC = 0;
+		
+		while(isNegative) {
+			System.out.print("Enter the number of terms to calculate the constant e, please enter a non negative number: ");
+			numberC = input.nextDouble();
+			
+			if(numberC < 0) {
+				;
+			} else {
+				isNegative = false;
+			}
+			
+		}
+		
+		double constantEC = 1;
+		
+		double numberOfTermsC = numberC;
+		
+		System.out.print("Enter the exponent of the constant e: ");
+		
+		double baseX = input.nextDouble();
+		
+		for(int i = 0; i < numberOfTermsC; i++) {
+			
+			//factorial
+			double factorialC = 1;
+			
+			for(double j = numberC; j > 0; j--) {
+			
+				factorialC = factorialC * j; 
+				
+			}
+			
+			constantEC = constantEC + (Math.pow(baseX, numberC)/factorialC);
+			
+			
+			numberC--;
+		}
+		
+		
+		System.out.println("This is the result: e = " + constantEC);
+		
+		
+	}
+
+}
