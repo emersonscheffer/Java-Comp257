@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+//(Square of Asterisks) Write an application that prompts the user to enter
+//the size of the side of a square, then displays a hollow square of that 
+//size made of asterisks. Your program should work for squares of all side
+//lengths between 1 and 20.
+
+public class Ex3_30SquareOfAsterisks {
+
+	public static void main(String[] args) {
+			
+		Scanner input = new Scanner(System.in);
+		
+		int sideOfSquare = 0;
+		
+		Boolean isGreaterOrSmaller = true;
+		
+		while (isGreaterOrSmaller) {
+			System.out.print("Enter the size of the side of a square: ");
+			sideOfSquare = input.nextInt();
+			
+			if(sideOfSquare > 20) {
+				isGreaterOrSmaller = true;
+				System.out.println("Enter a number smaller than 20!");
+			} else if(sideOfSquare < 1){
+				isGreaterOrSmaller = true;
+				System.out.println("Enter a number from 1 to 20!");
+			} else {
+				isGreaterOrSmaller = false;
+			}
+		}
+		
+		
+		//printer displays a hollow square 
+		
+		System.out.println("This square has a length of "+sideOfSquare + " units on its sides");
+		
+		String blankSpace = "";
+		
+		switch (sideOfSquare) {
+		case 1: blankSpace = "";
+		break;
+		case 2: blankSpace = " ";
+		break;
+		case 3: blankSpace = "   ";
+			break;
+		case 4: blankSpace = "     ";
+			break;
+		case 5: blankSpace = "       ";
+			break;
+		case 6: blankSpace = "         ";
+			break;
+		case 7: blankSpace = "           ";
+			break;
+		case 8: blankSpace = "             ";
+			break;
+		case 9: blankSpace = "               ";
+			break;
+		case 10: blankSpace = "                 ";
+			break;
+		case 11: blankSpace = "                   ";
+			break;
+		case 12: blankSpace = "                     ";
+			break;
+		case 13: blankSpace = "                       ";
+			break;
+		case 14: blankSpace = "                         ";
+			break;
+		case 15: blankSpace = "                           ";
+			break;
+		case 16: blankSpace = "                             ";
+			break;
+		case 17: blankSpace = "                               ";
+			break;
+		case 18: blankSpace = "                                 ";
+			break;
+		case 19: blankSpace = "                                   ";
+			break;
+		case 20: blankSpace = "                                     ";
+			break;
+			
+		default:
+			System.out.println("Oops, out of range, Try numbers 1 - 20!");
+			break;
+		}
+		
+		
+		if(sideOfSquare < 3) {
+			if(sideOfSquare == 1) {
+				System.out.println("*");
+			}
+			if(sideOfSquare == 2) {
+				System.out.println("* *");
+				System.out.println("* *");
+			}
+			
+		} else {
+			//top of the square
+			for(int i = 0; i < sideOfSquare; i++) {
+				System.out.print("* ");
+			}
+			System.out.println("");
+			
+			//side of the square
+			for(int i = 0; i < (sideOfSquare - 2); i++) {
+				System.out.println("*" + blankSpace + "*");
+			}
+			
+			
+			//bottom of the square
+			for(int i = 0; i < sideOfSquare ; i++) {
+				System.out.print("* ");
+			}
+		}
+		
+	}
+
+}
