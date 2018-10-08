@@ -1,0 +1,178 @@
+//(“The Twelve Days of Christmas” Song) Write an application that uses repetition
+//and switch statements to print the song “The Twelve Days of Christmas.”
+//One switch statement should be used to print the day (“first,” “second,” and so on). 
+//A separate switch statement should be used to print the remainder of each verse. 
+//Visit the website en.wikipedia.org/wiki/The_Twelve_Days_ of_Christmas_(song) for the lyrics of the song.
+
+public class Ex4_29TwelveDays {
+
+	public static void main(String[] args) {
+		
+
+		//On the first day of Christmas my true love sent to me
+		//A partridge in a pear tree
+		//Two turtle doves
+		//Three French hens
+		//4 calling birds
+		//5 gold rings
+		//6 geese a-laying
+		//7 swans a-swimming
+		//8 maids a-milking
+		//9 ladies dancing
+		//10 lords a-leaping
+		//11 pipers piping
+		//12 drummers drumming
+		
+		String days = "first";
+		String verseRemainder = "";
+		
+		int dayCounter = 1;
+		int verseCounter = 1;
+		
+		System.out.println("The Twelve Days of Christmas Song");
+		System.out.println(" ");
+		
+		
+		for (int i = 1; i <= 12; i++) {
+			switch (dayCounter) {
+			case 1: days = "first";
+				break;
+			case 2: days = "second";
+				break;
+			case 3: days = "third";
+				break;
+			case 4: days = "fourth";
+				break;
+			case 5: days = "fith";
+				break;
+			case 6: days = "sixth";
+				break;
+			case 7: days = "seventh";
+				break;
+			case 8: days = "eighth";
+				break;
+			case 9: days = "ninth";
+				break;
+			case 10: days = "tenth";
+				break;
+			case 11: days = "eleventh";
+				break;
+			case 12: days = "twelveth";
+				break;
+
+			default:
+				break;
+			}
+			
+			switch (verseCounter) {
+			case 1: verseRemainder = "A partridge in a pear tree \n";
+				break;
+			case 2: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n";
+				break;
+			case 3: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n";
+				break;
+			case 4: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n";
+				break;
+			case 5: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n";
+				break;
+			case 6: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n";
+				break;
+			case 7: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n";
+				break;
+			case 8: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n"
+					+ "eight maids a-milking \n";
+				break;
+			case 9: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n"
+					+ "eight maids a-milking \n"
+					+ "nine ladies dancing \n";
+				break;
+			case 10: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n"
+					+ "eight maids a-milking \n"
+					+ "nine ladies dancing \n"
+					+ "ten lords a-leaping \n";
+				break;
+			case 11: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n"
+					+ "eight maids a-milking \n"
+					+ "nine ladies dancing \n"
+					+ "ten lords a-leaping \n"
+					+ "eleven pipers piping \n";
+				break;
+			case 12: verseRemainder = "A partridge in a pear tree \n"
+					+ "Two turtle doves \n"
+					+ "Three French hens \n" 
+					+ "four calling birds \n"
+					+ "five gold rings \n"
+					+ "six geese a-laying \n"
+					+ "seven swans a-swimming \n"
+					+ "eight maids a-milking \n"
+					+ "nine ladies dancing \n"
+					+ "ten lords a-leaping \n"
+					+ "eleven pipers piping \n"
+					+ "twelve drummers drumming";
+				break;
+				
+				
+			default:
+				break;
+			}
+			
+			
+			
+			System.out.println("On the " + days + " day of Christmas my true love sent to me");
+			System.out.println(verseRemainder);
+			System.out.println("");
+			
+			
+			dayCounter++;
+			verseCounter++;
+			
+		}
+
+	}
+
+}
