@@ -1,0 +1,39 @@
+
+
+//(Find the Minimum) Write a method minimum3 that returns the smallest of three floating-
+//point numbers. Use the Math.min method to implement minimum3. 
+//Incorporate the method into an application that reads three values from the user, 
+//determines the smallest value and displays the result.
+
+import java.util.Scanner;
+
+
+public class Ex_5_23FindMinimum {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter 3 floating point numbers");
+		System.out.println("First: ");
+		float a = input.nextFloat(); 
+		System.out.println("Second: ");
+		float b = input.nextFloat(); 
+		System.out.println("Third: ");
+		float c = input.nextFloat();
+		
+		float minimum = minimum3(a, b, c);
+		System.out.println("The smallest one is: " + minimum);
+
+	}
+	
+	public static float minimum3(float a, float b, float c){
+		
+		float x = Math.min(a, b);
+		float y = Math.min(x, c);
+		
+		return y;
+	}
+	
+	
+
+}
