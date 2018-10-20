@@ -1,0 +1,49 @@
+
+//(Reversing Digits) Write a method that takes an integer value and returns the
+//number with its digits reversed. For example, given the number 7631, the method 
+//should return 1367. Incorporate the method into an application that reads a
+//value from the user and displays the result.
+
+import java.util.Scanner;
+
+public class Ex_5_26ReversingDigits {
+
+	public static void main(String[] args) {
+		
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		System.out.print("Enter integers: ");
+		
+		String numbersEntered = input.nextLine();
+		
+		int numbersEnteredInt = Integer.parseInt(numbersEntered);
+		
+		reverseDigits(numbersEnteredInt, numbersEntered);
+		
+	}
+	
+	public static int reverseDigits(int reverseNumber, String numbersEntered) {
+		
+		int x = 10;
+		int y = 1;
+		
+		int counterSentinel = numbersEntered.length();
+		
+		System.out.print("The reverse is : ");
+		
+		while(counterSentinel > 0) {
+			
+			System.out.print(reverseNumber % x / y);
+			x *= 10;
+			y *= 10;
+			
+			counterSentinel--;
+		}
+		
+		
+		return reverseNumber;
+	}
+	
+
+}
