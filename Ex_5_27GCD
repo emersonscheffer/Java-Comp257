@@ -1,0 +1,75 @@
+
+//(Greatest Common Divisor) The greatest common divisor (GCD) 
+//of two integers is the largest integer that evenly divides each of the two numbers.
+//Write a method gcd that returns the greatest common divisor of two integers.
+//[Hint: You might want to use Euclid’s algorithm. You can find information about
+//it at en.wikipedia.org/wiki/Euclidean_algorithm.] Incorporate the method into 
+//an application that reads two values from the user and displays the result.
+
+import java.util.Scanner;
+
+public class Ex_5_27GCD {
+
+	public static void main(String[] args) {
+		
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter two numbers to calculate the GCD");
+		System.out.print("first: ");
+		int firstNumber = input.nextInt();
+		
+		System.out.print("second: ");
+		int secondNumber = input.nextInt();
+		
+		gcd(firstNumber, secondNumber);
+
+	}
+	
+	public static int gcd(int a, int b) {
+		int peg1 = 0;
+		int peg2 = 0;
+		int peg3 = 0;
+		
+		//assigning the values
+	    //peg1
+		if(b > a){
+			peg1 = b;
+		} else if(a > b){
+			peg1 = a;
+		}
+	    //peg2
+		if (b < a) {
+			peg2 = b;
+		} else if(a < b){
+			peg2 = a;
+		}
+		
+	    
+		if(a != b){
+
+			do{
+				peg3 = peg1 % peg2;
+
+				peg1 = peg2;
+				
+				if(peg3 > 0){
+					
+					peg2 = peg3;
+				
+				}
+
+			}while(peg3 > 0);
+
+		        
+		} else {
+			
+			System.out.println("Please try entering two different numbers");
+	
+		}
+
+		System.out.println("The GCD is: " + peg2);
+		return 0;
+
+	}
+
+}
