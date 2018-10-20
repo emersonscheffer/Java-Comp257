@@ -1,0 +1,87 @@
+
+
+//(Perfect Numbers) An integer number is said to be a perfect number if its factors, 
+//including 1 (but not the number itself), sum to the number. For example, 6 is a perfect number, 
+//because 6 = 1 + 2 + 3.   
+//Write a method isPerfect that determines whether parameter number is a perfect number. 
+//Use this method in an application that displays all the perfect numbers between 1 and 1000.
+//Display the factors of each perfect number to confirm that the number is indeed perfect. 
+
+//Challenge the computing power of your computer by testing numbers much larger than 1000.
+//Display the results.
+
+public class Ex_5_24PerfectNumbers {
+
+	public static void main(String[] args) {
+		System.out.println("Perfect Numbers between 1 and 1000");
+		
+		for (int i = 1; i <= 1000; i++) {
+			isPerfect(i);
+		}
+		System.out.println(" ");
+		System.out.println(" ");
+		
+		System.out.println("Perfect Numbers between 1 and 1 billion");
+		
+		for (int i = 1; i <= 1000000000; i++) {
+			isPerfect(i);
+		}
+
+	}
+	
+	
+	
+	public static void isPerfect(int a) {
+		
+		int perfect = 0;
+		
+		for (int i = 1; i < a; i++) {
+			
+			if(a % i == 0) {
+
+					perfect = perfect + i;
+				
+			}
+		
+		}
+		
+		Boolean printer = false;
+		
+		if(perfect == a) {
+			printer = true;
+		} else {
+			printer = false;
+		}
+		
+		if(printer == true) {
+			
+			perfect = 0;
+			
+			System.out.println(" ");
+			
+			System.out.print(a + " = ");
+			
+			for (int i = 1; i < a; i++) {
+				
+				if(a % i == 0) {
+					
+						System.out.print(i);
+						perfect = perfect + i;
+						
+						if(perfect != a) {
+							System.out.print(" + ");
+						} else {
+							;
+						}
+					
+				}
+			
+			}
+			
+		}
+		
+		
+	}
+	
+
+}
