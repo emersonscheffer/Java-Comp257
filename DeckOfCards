@@ -1,0 +1,385 @@
+
+
+import java.security.SecureRandom;
+import java.util.ArrayList;
+
+
+public class DeckOfCards
+{
+	private Card[] deck; // array of Card objects
+	private int currentCard; // index of next Card to be dealt (0-51)
+	private static final int NUMBER_OF_CARDS = 52; // constant # of Cards
+	// random number generator
+	private static final SecureRandom randomNumbers = new SecureRandom();
+
+	//constructor fills deck of Cards
+	public DeckOfCards()
+	{
+		String[] faces = { "Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
+		String[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
+	
+		deck = new Card[NUMBER_OF_CARDS]; // create array of Card objects 
+		currentCard = 0; // first Card dealt will be deck[0]
+			
+		// populate deck with Card objects
+		for (int count = 0; count < deck.length; count++) {
+			deck[count] = new Card(faces[count % 13], suits[count / 13]);
+		}
+			
+	}
+	
+	//shuffle deck of Cards with one-pass algorithm
+	public void shuffle() 
+	{
+		// next call to method dealCard should start at deck[0] again
+		currentCard = 0;
+		
+		// for each Card, pick another random Card (0-51) and swap them
+		for (int first = 0; first < deck.length; first++) 
+		{
+			// select a random number between 0 and 51
+			int second = randomNumbers.nextInt(NUMBER_OF_CARDS);
+			
+			// swap current Card with randomly selected Card
+			Card temp = deck[first];
+			deck[first] = deck[second];
+			deck[second] = temp;
+		}
+	}
+	
+	// deal one Card
+	public Card dealCard() 
+	{
+		// determine whether Cards remain to be dealt
+		if (currentCard < deck.length)
+			return deck[currentCard++]; // return current Card in array
+		else
+			return null; // return null to indicate that all Cards were dealt
+	}
+	
+	public Card playerHand() {
+	
+		comparePair(1, 0);
+		//comparePair(2, 1);
+		//comparePair(3, 2);
+		//comparePair(4, 3);
+
+		return null;
+	}
+	
+	public void comparePair(int player, int firstCard) {
+		
+		int add4 = 1;
+		
+		int card = 0;
+		
+		card += firstCard;
+		String card1 = deck[card].getFace();
+		String suit1 = deck[card].getSuit();
+		card += add4;
+		String card2 = deck[card].getFace();
+		String suit2 = deck[card].getSuit();
+		card += add4;
+		String card3 = deck[card].getFace();
+		String suit3 = deck[card].getSuit();
+		card += add4;
+		String card4 = deck[card].getFace();
+		String suit4 = deck[card].getSuit();
+		card += add4;
+		String card5 = deck[card].getFace();
+		String suit5 = deck[card].getSuit();
+		
+		int a = valueOfCard(card1);
+		int b = valueOfCard(card2);
+		int c = valueOfCard(card3);
+		int d = valueOfCard(card4);
+		int e = valueOfCard(card5);
+		
+		int s1 = suitOfCard(suit1);
+		int s2 = suitOfCard(suit2);
+		int s3 = suitOfCard(suit3);
+		int s4 = suitOfCard(suit4);
+		int s5 = suitOfCard(suit5);
+		
+		
+		System.out.println(" ");
+		//System.out.println("-Player " + player);
+		
+		populateArray(a, b, c, d, e);
+		
+		straightSequence(a, b, c, d, e);
+		
+		isFlush(s1, s2, s3, s4, s5);
+		
+	}
+	
+	public int valueOfCard(String card) {
+		int cardValue = 0;
+		
+		switch(card) {
+			
+			case "Ace" : cardValue = 1;
+			break;
+			case "Deuce" : cardValue = 2;
+			break;
+			case "Three" : cardValue = 3;
+			break;
+			case "Four" : cardValue = 4;
+			break;
+			case "Five" : cardValue = 5;
+			break;
+			case "Six" : cardValue = 6;
+			break;
+			case "Seven" : cardValue = 7;
+			break;
+			case "Eight" : cardValue = 8;
+			break;
+			case "Nine" : cardValue = 9;
+			break;
+			case "Ten" : cardValue = 10;
+			break;
+			case "Jack" : cardValue = 11;
+			break;
+			case "Queen" : cardValue = 12;
+			break;
+			case "King" : cardValue = 13;
+			break;
+
+		}
+		return cardValue;
+	}
+	
+	public int suitOfCard(String suit) {
+		int suitValue = 0;
+		
+		switch(suit) {
+		case "Hearts" : suitValue = 1;
+			break;
+		case "Diamonds" : suitValue = 2;
+			break;
+		case "Clubs" : suitValue = 3;
+			break;
+		case "Spades" : suitValue = 4;
+			break;
+		}
+		
+		return suitValue;
+	}
+	
+	public void populateArray(int a, int b, int c, int d, int e) {
+		int[] playerHand = new int [5];
+		playerHand[0] = a;
+		playerHand[1] = b;
+		playerHand[2] = c;
+		playerHand[3] = d;
+		playerHand[4] = e;
+		
+		checkArray(playerHand);
+	}
+	
+	public void checkArray(int[] a) {
+		
+		ArrayList<Integer> same1 = new ArrayList<Integer>();
+		ArrayList<Integer> same2 = new ArrayList<Integer>();
+		ArrayList<Integer> same3 = new ArrayList<Integer>();
+		ArrayList<Integer> same4 = new ArrayList<Integer>();
+		
+		
+		for (int i = 0; i < a.length; i++) {
+			if(a[0] == a[i]) {
+				
+				same1.add(a[i]);
+				
+			}
+			
+		}
+		for (int i = 1; i < a.length; i++) {
+			if(a[1] == a[i]) {
+				
+				if(a[1] != a[0]) {
+					same2.add(a[i]);
+				}
+				
+				
+			}
+			
+		}
+		for (int i = 2; i < a.length; i++) {
+			if(a[2] == a[i]) {
+				
+				if(a[2] != a[0] && a[2] != a[1]) {
+					same3.add(a[i]);
+				}
+				
+				
+			}
+			
+		}
+		for (int i = 3; i < a.length; i++) {
+			if(a[3] == a[i]) {
+				
+				if(a[3] != a[0] && a[3] != a[1] && a[3] != a[2]) {
+					same4.add(a[i]);
+				}
+	
+			}
+			
+		}
+		
+		int pair2 = 0;
+		
+		checkMatch(same1.size());
+		checkMatch(same2.size());
+		checkMatch(same3.size());
+		checkMatch(same4.size());
+		
+		pair2 = is2Pairs(same1.size());
+		pair2 = pair2 + is2Pairs(same2.size());
+		pair2 = pair2 + is2Pairs(same3.size());
+		pair2 = pair2 + is2Pairs(same4.size());
+		
+		Boolean fullHousePair = false;
+		Boolean fullHouseThree = false;
+		
+		if(pair2 == 2) {
+			System.out.println("Two Pairs");
+		}
+		if(pair2 == 1) {
+			System.out.println("1 Pair");
+			fullHousePair = true;
+		}
+		
+		if(same1.size() == 3) {
+			fullHouseThree = true;
+		}
+		if(same2.size() == 3) {
+			fullHouseThree = true;
+		}
+		if(same3.size() == 3) {
+			fullHouseThree = true;
+		}
+		if(same4.size() == 3) {
+			fullHouseThree = true;
+		}
+		
+		
+	
+	}
+	
+	public int is2Pairs(int a) {
+		int pairs = 0;
+		
+		if(a == 2) {
+			pairs++;
+		}
+		
+		return pairs;
+	}
+	
+	public void checkMatch(int a) {
+		
+		switch(a) {
+		
+			case 1: ;
+				break;
+			case 2: 
+				;
+				break;
+			case 3: 
+				System.out.println("Three of a Kind");
+				break;
+			case 4: 
+				System.out.println("Four of a Kind");
+				break;
+		
+		}
+		
+	}
+	
+	public void straightSequence(int a, int b, int c, int d, int e) {
+		
+		//1 2 3 4 5
+		int[] numbers = new int[5];
+		numbers[0] = a;
+		numbers[1] = b;
+		numbers[2] = c;
+		numbers[3] = d;
+		numbers[4] = e;
+		
+	
+		int first = 0;
+		int second = 0;
+		int third = 0;
+		int fourth = 0;
+		int fifth = 0;
+		
+		for(int i = 0; i < 5; i++) {
+			for(int k = 0; k < 5; k++) {
+				
+				if(first < numbers[k]) {
+					first = numbers[k];
+				}
+				if(numbers[k] == first) {
+					;
+				} else {
+					if(second < numbers[k]) {
+						second = numbers[k];
+					}
+				}
+				if(numbers[k] == first) {
+					;
+				} else if(numbers[k] == second) {
+					;
+				} else {
+					if(third < numbers[k]) {
+						third = numbers[k];
+					}
+				}
+				if(numbers[k] == first) {
+					;
+				} else if(numbers[k] == second || numbers[k] == third) {
+					;
+				} else {
+					if(fourth < numbers[k]) {
+						fourth = numbers[k];
+					}
+				}
+				
+				if(numbers[k] == first) {
+					;
+				} else if(numbers[k] == second || numbers[k] == third || numbers[k] == fourth) {
+					;
+				} else {
+					if(fifth < numbers[k]) {
+						fifth = numbers[k];
+					}
+				}	
+			}
+		}
+		
+		
+		if(first == (second + 1)) {
+			if(second == third + 1) {
+				if(third == fourth + 1) {
+					if(fourth == fifth + 1) {
+						System.out.println("Straight");
+					}	
+				}	
+			}	
+		}
+	}
+	
+	public void isFlush(int a, int b, int c, int d, int e) {
+		if(a == b && b == c && c == d && d == e) {
+			System.out.println("This player has a Flush");
+		} 
+	}
+	public void isFullHouse(boolean a, boolean b) {
+		if(a == true && b == true) {
+			System.out.println("= | =  FULL HOUSE  = | =");
+		}
+	}
+	
+	
+} // end class DeckOfCards
+
