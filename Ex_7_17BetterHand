@@ -1,0 +1,25 @@
+//(Card Shuffling and Dealing) Use the methods developed in Exercise 7.16 to write an 
+//application that deals two five-card poker hands, evaluates each hand and determines 
+//which is better.
+
+public class Ex_7_17BetterHand {
+
+	public static void main(String[] args) {
+		DeckOfCards17 myDeckOfCards = new DeckOfCards17();
+		myDeckOfCards.shuffle(); // place Cards in random order
+		
+		// print 5 cards poker hand in the order in which they are dealt
+		for(int i = 1; i <= 10; i++) {
+			
+			// deal and display a Card
+			System.out.printf("%-19s", myDeckOfCards.dealCard());
+			if (i % 2 == 0) // output a newline after every four cards 
+				System.out.println();
+		}
+		
+		myDeckOfCards.playerHandCards();
+	}
+
+	
+
+}
