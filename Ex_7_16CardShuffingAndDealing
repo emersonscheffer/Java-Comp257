@@ -1,0 +1,31 @@
+//(Card Shuffling and Dealing) Modify the application of Fig. 7.13 to deal
+//a five-card poker hand. Then modify class DeckOfCards of Fig. 7.12 to include
+//methods that determine whether a hand contains
+
+//a) a pair
+//b) two pairs
+//c) three of a kind (e.g., three jacks)
+//d) four of a kind (e.g., four aces)
+//e) a flush (i.e., all five cards of the same suit)
+//f) a straight (i.e., five cards of consecutive face values)
+//g) a full house (i.e., two cards of one face value and three cards of another face value)
+//[Hint: Add methods getFace and getSuit to class Card of Fig. 7.11.]
+
+public class Ex_7_16CardShuffingAndDealing {
+
+	public static void main(String[] args) {
+		DeckOfCards myDeckOfCards = new DeckOfCards();
+		myDeckOfCards.shuffle(); // place Cards in random order
+		
+		// print 5 cards poker hand in the order in which they are dealt
+		for(int i = 1; i <= 5; i++) {
+			
+			// deal and display a Card
+			System.out.printf("%-19s", myDeckOfCards.dealCard());
+			if (i % 1 == 0) // output a newline after every four cards 
+				System.out.println();
+		}
+		
+		myDeckOfCards.playerHand();
+	}
+}
